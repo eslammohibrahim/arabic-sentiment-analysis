@@ -1,0 +1,5 @@
+# Only needed for src/finetune.py (BERT). CPU build of PyTorch.
+--extra-index-url https://download.pytorch.org/whl/cpu
+-r requirements.txt
+torch==2.15.0+cpu
+transformers==5.22.1

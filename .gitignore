@@ -5,3 +5,4 @@ __pycache__/
 data/
 models/
 reports/train_log.txt
+reports/bert_log.txt
