@@ -1,5 +1,7 @@
 # Arabic Sentiment Analysis
 
+[![tests](https://github.com/eslammohibrahim/arabic-sentiment-analysis/actions/workflows/tests.yml/badge.svg)](https://github.com/eslammohibrahim/arabic-sentiment-analysis/actions/workflows/tests.yml)
+
 Classifying Arabic reviews as **Positive**, **Mixed**, or **Negative**, with an Arabic-specific text normalization step and a fair comparison of five classic NLP models.
 
 **Result:** 69.2% accuracy and 0.689 macro F1 on 19,964 unseen test reviews (three balanced classes, so random guessing gets 33%). When a review is truly positive or negative, the model picks the opposite polarity only **7.5%** of the time. Most remaining errors involve the Mixed class.
