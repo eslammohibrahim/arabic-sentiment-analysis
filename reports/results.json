@@ -1,0 +1,307 @@
+{
+  "data": {
+    "total": 99820,
+    "train": 63884,
+    "validation": 15972,
+    "test": 19964
+  },
+  "normalization": {
+    "basic cleaning": {
+      "accuracy": 0.6819,
+      "macro_f1": 0.6786
+    },
+    "Arabic normalization": {
+      "accuracy": 0.6868,
+      "macro_f1": 0.6836
+    }
+  },
+  "comparison": {
+    "Naive Bayes": {
+      "accuracy": 0.6702,
+      "macro_f1": 0.671,
+      "seconds": 0.3,
+      "alpha": 3.0
+    },
+    "Logistic Regression": {
+      "accuracy": 0.687,
+      "macro_f1": 0.6857,
+      "seconds": 13.1,
+      "C": 1
+    },
+    "Linear SVM": {
+      "accuracy": 0.6875,
+      "macro_f1": 0.6836,
+      "seconds": 1.3,
+      "C": 0.1
+    },
+    "Linear SVM (characters)": {
+      "accuracy": 0.6819,
+      "macro_f1": 0.678,
+      "seconds": 5.4,
+      "C": 0.1
+    },
+    "Linear SVM (words + characters)": {
+      "accuracy": 0.6935,
+      "macro_f1": 0.6899,
+      "seconds": 6.1,
+      "C": 0.1
+    }
+  },
+  "search": {
+    "Naive Bayes": {
+      "0.1": {
+        "accuracy": 0.6504,
+        "macro_f1": 0.6499,
+        "seconds": 0.3
+      },
+      "0.3": {
+        "accuracy": 0.6648,
+        "macro_f1": 0.6647,
+        "seconds": 0.3
+      },
+      "1.0": {
+        "accuracy": 0.6701,
+        "macro_f1": 0.6706,
+        "seconds": 0.3
+      },
+      "3.0": {
+        "accuracy": 0.6702,
+        "macro_f1": 0.671,
+        "seconds": 0.3
+      }
+    },
+    "Logistic Regression": {
+      "0.3": {
+        "accuracy": 0.6817,
+        "macro_f1": 0.68,
+        "seconds": 8.8
+      },
+      "1": {
+        "accuracy": 0.687,
+        "macro_f1": 0.6857,
+        "seconds": 13.1
+      },
+      "3": {
+        "accuracy": 0.6827,
+        "macro_f1": 0.6816,
+        "seconds": 12.1
+      }
+    },
+    "Linear SVM": {
+      "0.02": {
+        "accuracy": 0.6729,
+        "macro_f1": 0.6689,
+        "seconds": 1.3
+      },
+      "0.05": {
+        "accuracy": 0.6833,
+        "macro_f1": 0.6791,
+        "seconds": 1.2
+      },
+      "0.1": {
+        "accuracy": 0.6875,
+        "macro_f1": 0.6836,
+        "seconds": 1.3
+      },
+      "0.25": {
+        "accuracy": 0.6868,
+        "macro_f1": 0.6836,
+        "seconds": 1.7
+      }
+    },
+    "Linear SVM (characters)": {
+      "0.02": {
+        "accuracy": 0.676,
+        "macro_f1": 0.671,
+        "seconds": 5.0
+      },
+      "0.05": {
+        "accuracy": 0.68,
+        "macro_f1": 0.6754,
+        "seconds": 5.1
+      },
+      "0.1": {
+        "accuracy": 0.6819,
+        "macro_f1": 0.678,
+        "seconds": 5.4
+      },
+      "0.25": {
+        "accuracy": 0.6776,
+        "macro_f1": 0.6741,
+        "seconds": 6.9
+      }
+    },
+    "Linear SVM (words + characters)": {
+      "0.02": {
+        "accuracy": 0.6886,
+        "macro_f1": 0.6839,
+        "seconds": 5.7
+      },
+      "0.05": {
+        "accuracy": 0.693,
+        "macro_f1": 0.6888,
+        "seconds": 6.3
+      },
+      "0.1": {
+        "accuracy": 0.6935,
+        "macro_f1": 0.6899,
+        "seconds": 6.1
+      },
+      "0.25": {
+        "accuracy": 0.6863,
+        "macro_f1": 0.6836,
+        "seconds": 7.7
+      }
+    }
+  },
+  "final": {
+    "model": "Linear SVM (words + characters)",
+    "C": 0.1,
+    "test": {
+      "accuracy": 0.6924,
+      "macro_f1": 0.6894,
+      "polarity_flip_rate": 0.075
+    },
+    "per_class": {
+      "Negative": {
+        "precision": 0.7321,
+        "recall": 0.7582,
+        "f1-score": 0.7449,
+        "support": 6653.0
+      },
+      "Mixed": {
+        "precision": 0.6296,
+        "recall": 0.5524,
+        "f1-score": 0.5885,
+        "support": 6656.0
+      },
+      "Positive": {
+        "precision": 0.7054,
+        "recall": 0.7668,
+        "f1-score": 0.7348,
+        "support": 6655.0
+      }
+    }
+  },
+  "top_words": {
+    "Mixed": [
+      "مرضي",
+      "مقبول",
+      "حسن",
+      "كتاب جيد",
+      "جيده",
+      "لكن",
+      "متوسط",
+      "لاباس",
+      "نجمات",
+      "ولكن",
+      "نجوم",
+      "فاي ضعيف"
+    ],
+    "Negative": [
+      "ضعيف",
+      "مخيب",
+      "مخيب للامل",
+      "للامل",
+      "سيئه",
+      "اسوا",
+      "غير",
+      "لم",
+      "نجمه",
+      "سيء",
+      "لا انصح",
+      "نجمتين"
+    ],
+    "Positive": [
+      "استثنائي",
+      "رائع",
+      "ممتاز",
+      "جيد",
+      "رائعه",
+      "ممتازه",
+      "روعه",
+      "اروع",
+      "من اجمل",
+      "جيد جدا",
+      "شكرا",
+      "تحفه"
+    ]
+  },
+  "error_examples": [
+    {
+      "text": "من كل كتاب عبرة حتى لو تعارض مع طريقة تفكيرك أو قناعاتك",
+      "sentiment": "Mixed",
+      "pred": "Positive"
+    },
+    {
+      "text": "يوم عمل . الموقع والطاقم العمل لا يوجد. لا يوجد",
+      "sentiment": "Positive",
+      "pred": "Negative"
+    },
+    {
+      "text": "السلعة سعرها ممتاز وجيدة لا بأس بها",
+      "sentiment": "Mixed",
+      "pred": "Positive"
+    },
+    {
+      "text": "مفيش حد بيوصف النساء المحطمة كدة :",
+      "sentiment": "Positive",
+      "pred": "Negative"
+    },
+    {
+      "text": "اقامة فخمه . كل شئ ماعدا التكيييييف. التكيييييييييييييف سئ",
+      "sentiment": "Positive",
+      "pred": "Negative"
+    },
+    {
+      "text": "لا تقل ملحد ، قل ثائر",
+      "sentiment": "Mixed",
+      "pred": "Negative"
+    },
+    {
+      "text": "قصة قديمة جديدة ثورة فاشلة أخرى. مزيد من الشهداء فقط",
+      "sentiment": "Mixed",
+      "pred": "Negative"
+    },
+    {
+      "text": "الحب والخيانه لايجتمعان",
+      "sentiment": "Mixed",
+      "pred": "Negative"
+    },
+    {
+      "text": "تعتبر جيده للمظهر فقط من ناحية الشكل والاضائه الحمرا لكن الافضل التوصيل السريع للبائع اااااااااااااااااااااااااااااااااا",
+      "sentiment": "Positive",
+      "pred": "Mixed"
+    },
+    {
+      "text": "مقال جيد ومبهر ومفرح : . رحم الله بيجوفيتش",
+      "sentiment": "Mixed",
+      "pred": "Positive"
+    },
+    {
+      "text": "خفيف جدا .. مسلي أيضا",
+      "sentiment": "Negative",
+      "pred": "Mixed"
+    },
+    {
+      "text": "رغم ان الروايه قويه وفيها مواقف كتير الا ان النهايه مفتوووووحه فعلا بضع ساعات بس",
+      "sentiment": "Positive",
+      "pred": "Mixed"
+    },
+    {
+      "text": "كان ليكون كتابا رائعا لو انني قرأته قبل خمسة عشر عاما..",
+      "sentiment": "Negative",
+      "pred": "Positive"
+    },
+    {
+      "text": "الفندق جيد ولكن السعر مرتفع عليه . نعم. المعاملة من بعض الموظفين",
+      "sentiment": "Negative",
+      "pred": "Mixed"
+    },
+    {
+      "text": "طبيعي جدا تكون اولى روايات دان براون، عشانها اقلهم فعلا..",
+      "sentiment": "Mixed",
+      "pred": "Positive"
+    }
+  ]
+}
