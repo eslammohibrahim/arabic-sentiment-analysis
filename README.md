@@ -6,6 +6,8 @@ This takes an Arabic review and says whether it's positive, negative, or somewhe
 
 The final model gets 69.2% accuracy (0.689 macro F1) on 19,964 test reviews it never saw. With three balanced classes, guessing would get 33%. It rarely flips a positive review to negative or the other way around (7.5% of the time); most of its mistakes involve the Mixed class.
 
+Later I fine-tuned a small Arabic BERT on the same split and it got to 71.2% (0.711 macro F1), but it took over two hours to train on CPU instead of a minute. That comparison is at the end.
+
 ```text
 $ python src/predict.py
 Positive  | الفندق نظيف جدا والموظفين محترمين والفطار ممتاز، أكيد هرجعله تاني
@@ -116,13 +118,29 @@ Some test-set mistakes and why they happen:
 
 The first three are real limits of the model: it can't handle conditionals, and one strong complaint can outweigh general praise. In the last two the text and the rating just disagree.
 
+## Update: trying a small Arabic BERT
+
+After the classic models I wanted to see how much a transformer would add. Fine-tuning a big Arabic BERT on a laptop CPU isn't realistic, so I tried two small ones from the same family, [bert-mini-arabic](https://huggingface.co/asafaya/bert-mini-arabic) (11.5M parameters) and [bert-medium-arabic](https://huggingface.co/asafaya/bert-medium-arabic) (42.1M), on exactly the same train, validation and test split as above ([`src/finetune.py`](src/finetune.py)). BERT gets the raw review text with only the URLs removed, since it has its own tokenizer. I kept the epoch with the best validation score and then ran the test set once.
+
+| Model | Size | Test accuracy | Test macro F1 | Mixed F1 | Training on CPU |
+|---|---|---|---|---|---|
+| TF-IDF + linear SVM (above) | | 69.2% | 0.689 | 0.589 | about a minute |
+| bert-mini-arabic, 3 epochs | 11.5M | 69.4% | 0.693 | 0.598 | 29 min |
+| bert-medium-arabic, 2 epochs | 42.1M | 71.2% | 0.711 | 0.618 | 133 min |
+
+![BERT vs SVM](reports/figures/bert_vs_svm.png)
+
+bert-medium-arabic is the best model I've tried on this data, 2.2 points of macro F1 above the SVM. It's better on all three classes, and the biggest jump is on Mixed (F1 0.589 to 0.618), the class the classic model struggled with. My guess is that word order helps there: a bag of words can't tell "good, but expensive" from "expensive, but good". It costs a lot more, though. Training took over two hours on my CPU instead of about a minute, and predicting is slower too. The labels still come from star ratings, so I don't expect much more without cleaner data.
+
+To run it: `pip install -r requirements-bert.txt`, then `python src/finetune.py --model asafaya/bert-medium-arabic --epochs 2`.
+
 ## Limitations
 
 The labels seem to come from ratings, so some don't match the text and Mixed can't get much better than this. The data is mostly books and hotels, so I don't know how it does on restaurants or apps, and I've only tried Egyptian dialect on a few sentences I wrote. Bag-of-words models also miss word order, sarcasm and conditionals.
 
 ## What I'd do next
 
-Fine-tune AraBERT or CAMeLBERT and compare it with this baseline, test on an Egyptian-dialect dataset, and put the model behind a small API.
+Try a full-size AraBERT or CAMeLBERT on a GPU, test on an Egyptian-dialect dataset, and put the model behind a small API.
 
 ## Run it
 
@@ -146,6 +164,8 @@ src/
   explore.py      exploratory analysis
   train.py        model comparison, tuning, final evaluation, figures
   predict.py      predictions with the saved model
+  finetune.py     fine-tunes a small Arabic BERT on the same split
+  compare_bert.py puts the BERT results next to the SVM
 tests/
   test_preprocess.py
 reports/

@@ -1,0 +1,29 @@
+{
+  "model": "asafaya/bert-medium-arabic",
+  "parameters_millions": 42.1,
+  "epochs": 2,
+  "history": [
+    {
+      "epoch": 1,
+      "val_macro_f1": 0.7097,
+      "minutes": 59.9
+    },
+    {
+      "epoch": 2,
+      "val_macro_f1": 0.7142,
+      "minutes": 133.2
+    }
+  ],
+  "best_val_macro_f1": 0.7142,
+  "test": {
+    "accuracy": 0.7119,
+    "macro_f1": 0.7114
+  },
+  "per_class_f1": {
+    "Negative": 0.7616,
+    "Mixed": 0.6176,
+    "Positive": 0.755
+  },
+  "train_minutes": 133.2,
+  "cpu_ms_per_review_batched": 16.73
+}

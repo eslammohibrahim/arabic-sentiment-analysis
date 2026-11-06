@@ -1,0 +1,34 @@
+{
+  "model": "asafaya/bert-mini-arabic",
+  "parameters_millions": 11.5,
+  "epochs": 3,
+  "history": [
+    {
+      "epoch": 1,
+      "val_macro_f1": 0.6881,
+      "minutes": 12.1
+    },
+    {
+      "epoch": 2,
+      "val_macro_f1": 0.6909,
+      "minutes": 20.4
+    },
+    {
+      "epoch": 3,
+      "val_macro_f1": 0.6977,
+      "minutes": 29.1
+    }
+  ],
+  "best_val_macro_f1": 0.6977,
+  "test": {
+    "accuracy": 0.6938,
+    "macro_f1": 0.693
+  },
+  "per_class_f1": {
+    "Negative": 0.7436,
+    "Mixed": 0.5978,
+    "Positive": 0.7376
+  },
+  "train_minutes": 29.1,
+  "cpu_ms_per_review_batched": 1.46
+}

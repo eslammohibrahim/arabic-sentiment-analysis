@@ -1,0 +1,25 @@
+[
+  {
+    "name": "TF-IDF + linear SVM",
+    "params": null,
+    "acc": 0.6924,
+    "f1": 0.6894,
+    "mixed": 0.5885
+  },
+  {
+    "name": "bert-mini-arabic",
+    "params": 11.5,
+    "acc": 0.6938,
+    "f1": 0.693,
+    "mixed": 0.5978,
+    "minutes": 29.1
+  },
+  {
+    "name": "bert-medium-arabic",
+    "params": 42.1,
+    "acc": 0.7119,
+    "f1": 0.7114,
+    "mixed": 0.6176,
+    "minutes": 133.2
+  }
+]
